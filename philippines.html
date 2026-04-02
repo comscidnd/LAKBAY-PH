@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lakbay PH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="philippines.css"/>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-bg">
+        <video class="hero-video" src="https://www.pexels.com/download/video/33132100/" muted playsinline preload="auto"></video>
+        <video class="hero-video" src="https://www.pexels.com/download/video/6640181/" muted playsinline preload="auto"></video>
+
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">✦ Explore &nbsp;·&nbsp; Discover &nbsp;·&nbsp; Wander ✦</p>
+        <h1 class="hero-title">LakbayPinoy Explorer:<em>Discover Philippines</em></h1>
+        <p class="hero-sub">7,641 islands &nbsp;·&nbsp; infinite wonders &nbsp;·&nbsp; where will you go?</p>
+
+        <div class="search-wrapper">
+            <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          <input type="text" id="searchInput" placeholder="Search islands, regions, activities…" autocomplete="off"/>
+          <button id="clearBtn" class="clear-btn" title="Clear">✕</button>
+        </div>
+        <button id="searchBtn">Search</button>
+      </div>
+
+      <div class="filter-pills">
+        <button class="pill active" data-region="all">All</button>
+        <button class="pill" data-region="luzon">Luzon</button>
+        <button class="pill" data-region="visayas">Visayas</button>
+        <button class="pill" data-region="mindanao">Mindanao</button>
+      </div>
+    </div>
+
+    <div class="scroll-hint">↓ &nbsp; scroll to explore</div>
+  </header>
+
+  <main class="main-content">
+    <div class="section-header">
+      <h2 id="resultsTitle">Featured Destinations</h2>
+      <span id="resultsCount" class="count-badge"></span>
+    </div>
+
+    <div id="noResults" class="no-results hidden">
+      <div class="no-results-icon">🗺️</div>
+      <h3>No places found</h3>
+      <p>Try another keyword or explore all destinations.</p>
+      <button onclick="resetSearch()">Show All</button>
+    </div>
+
+    <div id="cardGrid" class="card-grid"></div>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt=""/>
+        <div class="modal-img-overlay"></div>
+        <span id="modalRegionTag" class="modal-region-tag"></span>
+        <div class="modal-title-wrap">
+          <h2 id="modalTitle"></h2>
+          <p id="modalLocation"></p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p id="modalDesc" class="modal-desc"></p>
+        <div class="modal-meta">
+          <div class="meta-item">
+            <span class="meta-label">Best Time</span>
+            <span class="meta-value" id="modalSeason"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Known For</span>
+            <span class="meta-value" id="modalFame"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Activity</span>
+            <span class="meta-value" id="modalActivity"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FESTIVALS ── -->
+  <section class="festivals-section">
+    <div class="festivals-inner">
+      <div class="festivals-header">
+        <h2>Featured <em>Festivals</em></h2>
+        <span class="fest-badge">10 Celebrations</span>
+      </div>
+
+      <div class="fest-track-wrap">
+        <div class="fest-track" id="festTrack">
+
+          <div class="fest-card">
+            <img src="https://www.rappler.com/tachyon/2025/01/Sinulog-Streetdance03_Jhernandez.jpg" alt="Sinulog" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">January</span>
+              <h3 class="fest-name">Sinulog Festival</h3>
+              <p class="fest-location">📍 Cebu City, Visayas</p>
+              <p class="fest-desc">One of the grandest festivals in the Philippines, Sinulog honors the Santo Niño with vibrant street dancing, elaborate costumes, and a massive parade drawing millions of devotees and tourists.</p>
+              <span class="fest-tag">Cultural · Religious · Street Dance ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://www.camella.com.ph/wp-content/uploads/2023/12/1200px-Kalibo_Ati-Atihan_Festival_Philippines-1-1024x683.jpg" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">January</span>
+              <h3 class="fest-name">Ati-Atihan Festival</h3>
+              <p class="fest-location">📍 Kalibo, Aklan, Visayas</p>
+              <p class="fest-desc">Known as the "Mother of All Philippine Festivals," Ati-Atihan features revelers painted in black soot dancing to drums in the streets, celebrating the Sto. Niño with wild, jubilant energy.</p>
+              <span class="fest-tag">Cultural · Tribal · Music ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://lakbaypinas.com/wp-content/uploads/2024/09/457297862_8195285397198218_3005208262213019372_n.jpg" alt="MassKara" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">October</span>
+              <h3 class="fest-name">MassKara Festival</h3>
+              <p class="fest-location">📍 Bacolod City, Visayas</p>
+              <p class="fest-desc">Born from tragedy, MassKara is Bacolod's answer to adversity — a festival of smiling masks and exuberant street dancing that earned Bacolod its title as the "City of Smiles."</p>
+              <span class="fest-tag">Art · Dance · Resilience ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.oSkwgHME8rnk_K1949un5AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pahiyas" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">May</span>
+              <h3 class="fest-name">Pahiyas Festival</h3>
+              <p class="fest-location">📍 Lucban, Quezon, Luzon</p>
+              <p class="fest-desc">A dazzling harvest festival where houses in Lucban are decorated with colorful kiping rice wafers, fruits, and vegetables in thanksgiving to San Isidro Labrador, patron of farmers.</p>
+              <span class="fest-tag">Harvest · Folk Art · Colors ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://pressone.ph/wp-content/uploads/2019/07/Kadayawan-indak.jpg" alt="Kadayawan" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">August</span>
+              <h3 class="fest-name">Kadayawan Festival</h3>
+              <p class="fest-location">📍 Davao City, Mindanao</p>
+              <p class="fest-desc">Davao's week-long celebration of life, nature's bounty, and the rich heritage of its 11 indigenous tribes, highlighted by floral parades, street dancing, and cultural showcases.</p>
+              <span class="fest-tag">Indigenous · Flowers · Heritage ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://images.ebosya.com/wp-content/uploads/2025/10/panagbenga-festival-baguio-flower-parade-2026.webp" alt="Panagbenga" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">February</span>
+              <h3 class="fest-name">Panagbenga Festival</h3>
+              <p class="fest-location">📍 Baguio City, Luzon</p>
+              <p class="fest-desc">The "Flower Festival" of Baguio fills the City of Pines with spectacular floats blanketed in fresh blooms, grand street dancing, and a month-long celebration of highland culture.</p>
+              <span class="fest-tag">Flowers · Parade · Highland ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.uMC7BGwqNP0WSfNcr0DkhAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Moriones" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">April (Holy Week)</span>
+              <h3 class="fest-name">Moriones Festival</h3>
+              <p class="fest-location">📍 Marinduque, Luzon</p>
+              <p class="fest-desc">During Holy Week, the island of Marinduque transforms as participants don elaborate Roman soldier masks and costumes to reenact the legend of Longinus — a uniquely Filipino passion play.</p>
+              <span class="fest-tag">Religious · Theater · Masks ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://i.pinimg.com/originals/1c/b5/aa/1cb5aa878f9a4084d3f82c8f80bc3bf7.jpg" alt="Dinagyang" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">January</span>
+              <h3 class="fest-name">Dinagyang Festival</h3>
+              <p class="fest-location">📍 Iloilo City, Visayas</p>
+              <p class="fest-desc">Iloilo's answer to Sinulog, Dinagyang is a UNESCO-recognized festival featuring warrior-themed dance troupes in elaborate body paint and costumes performing to thunderous drum beats.</p>
+              <span class="fest-tag">UNESCO · Tribal Dance · Warriors ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src="https://pia.gov.ph/wp-content/uploads/2024/07/LF1.jpg" alt="Lanzones" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">October</span>
+              <h3 class="fest-name">Lanzones Festival</h3>
+              <p class="fest-location">📍 Camiguin, Mindanao</p>
+              <p class="fest-desc">Camiguin's beloved harvest festival where locals adorn themselves in lanzones fruit costumes and celebrate the island's famous sweet harvest with street dancing and trade fairs.</p>
+              <span class="fest-tag">Harvest · Island · Tropical ↗</span>
+            </div>
+          </div>
+
+          <div class="fest-card">
+            <img src=https://www.festival-of-light.com/wp-content/uploads/giant-lantern-festival-2.jpg" alt="Giant Lantern" loading="lazy"/>
+            <div class="fest-card-overlay"></div>
+            <div class="fest-card-content">
+              <span class="fest-month">December</span>
+              <h3 class="fest-name">Giant Lantern Festival</h3>
+              <p class="fest-location">📍 San Fernando, Pampanga, Luzon</p>
+              <p class="fest-desc">The "Christmas Capital of the Philippines" hosts a dazzling competition of giant star-shaped lanterns — called parol — that spin and light up the night sky with kaleidoscopic brilliance.</p>
+              <span class="fest-tag">Christmas · Lights · Parol ↗</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="fest-arrows">
+        <button class="fest-arrow" id="festPrev" title="Previous">←</button>
+        <button class="fest-arrow" id="festNext" title="Next">→</button>
+      </div>
+      <div class="about">
+        <h3>About Lakbay Pinoy Explorer: <em>Discover Philippines</em></h3>
+        <p class="desc">
+          The Tourist Spot "LakbayPinoy Explorer: Discover Philippines" website is designed to provide a simple and efficient way for users to explore information about tourist destinations and festivals in the Philippines. <br>
+          The system focuses on ease of use and accessibility, allowing users to quickly find relevant 
+          information through a clean and organized interface.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>✦ Philippine Tourist Spots &copy; 2025 &nbsp;|&nbsp; Built with <span>♥</span> for the Pearl of the Orient</p>
+    <p>All Rights Reserved.</p>
+  </footer>
+
+  <script src="philippines.js"></script>
+</body>
+</html>
